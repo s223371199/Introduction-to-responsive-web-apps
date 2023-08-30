@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ProgressTrack - Your Learning Journey</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Welcome to Peter's ProgressTrack</h1>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Profile</a></li>
+        </ul>
+      </nav>
+    </header>
+  
+    <main>
+      <section class="dashboard">
+        <h2>Your Progress Dashboard</h2>
+        <!-- Display progress charts and stats -->
+        <div class="chart">
+          <canvas id="progressChart"></canvas>
+        </div>
+        <div class="stats">
+          <div>Total Goals: {{ goals.length }}</div>
+          <div>Total Learning Hours: {{ totalLearningHours }}</div>
+        </div>
+      </section>
+      
+      <section class="goal-setting">
+        <h2>Set Your Learning Goals</h2>
+        <!-- Goal setting form -->
+        <form @submit.prevent="addGoal">
+          <label for="goalTitle">Title:</label>
+          <input type="text" id="goalTitle" v-model="newGoal.title" required>
+          <label for="goalDescription">Description:</label>
+          <textarea id="goalDescription" v-model="newGoal.description" required></textarea>
+          <label for="goalDeadline">Deadline:</label>
+          <input type="date" id="goalDeadline" v-model="newGoal.deadline" required>
+          <button type="submit">Add Goal</button>
+        </form>
+      </section>
+      
+      <section class="learning-log">
+        <h2>Learning Log</h2>
+        <!-- Learning activities log -->
+        <ul class="activities">
+          <li v-for="activity in learningActivities" :key="activity.id">
+            <strong>{{ activity.date }}</strong>
+            <p>{{ activity.activity }}</p>
+            <small>Duration: {{ activity.hours }} hours</small>
+          </li>
+        </ul>
+      </section>
+    </main>
+  
+    <footer>
+    </footer>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.0.0/dist/vue.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
