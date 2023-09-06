@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>This is my personal portfolio which helps me keep track of my tasks and goals</h1>
   </div>
 </template>
 

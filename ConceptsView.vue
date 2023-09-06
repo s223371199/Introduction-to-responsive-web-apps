@@ -11,7 +11,7 @@ const text = ref (' Edit me ')
 
 
 <div class = "myDiv">
-<h1> Text Input </h1>
+<h1> Task list </h1>
 <input v-model= "text"> {{ text }}
 <h2> Checkbox</h2>
 <input type="checkbox" id="checkbox" v-model="checked">
@@ -30,7 +30,7 @@ const text = ref (' Edit me ')
 <style scoped>
     .myDiv {
     border: 5px outset lightgrey;
-    background-color: greenyellow;
+    background-color: aqua;
     text-align: center;
     padding: 60px;
     }

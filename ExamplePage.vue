@@ -22,7 +22,7 @@ function removeItem(id) {
 
 <template>
   <div class="myDiv">
-    <h1>My Shopping list</h1>
+    <h1>My Homework list</h1>
     <input type="text" v-model="shoppingitem">
     <button @click="addItem">Add Item</button>
 
@@ -44,7 +44,7 @@ function removeItem(id) {
 }
 .myDiv {
   border: 5px outset lightgrey;
-  background-color: greenyellow;
+  background-color: aqua;
   text-align: center;
   padding: 60px;
 }

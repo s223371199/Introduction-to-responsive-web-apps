@@ -5,7 +5,7 @@ https://eugenkiss.github.io/7guis/tasks/#crud
 <script setup>
 import { ref, reactive, computed, watch } from 'vue'
 
-const names = reactive(['Emil, Hans', 'Mustermann, Max', 'Tisch, Roman'])
+const names = reactive(['Peter, Samothrakitis'])
 const selected = ref('')
 const prefix = ref('')
 const first = ref('')

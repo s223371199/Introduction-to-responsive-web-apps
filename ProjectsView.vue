@@ -1,7 +1,7 @@
 <template>
     <div :style= "{fontSize: postFontSize + 'em'}">
 
-This is projects page!
+This is the projects page!
 <div>
 <ol> 
 <li v-for="post in posts">{{ post.title }}</li>
