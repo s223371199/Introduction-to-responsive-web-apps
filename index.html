@@ -2,8 +2,11 @@
 <html>
 <head>
   <title>ProgressTrack - Your Learning Journey</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bubble+Gum&display=swap">
   <link rel="stylesheet" href="styles.css">
+
 </head>
+
 <body>
   <div id="app">
     <header>
@@ -25,8 +28,8 @@
           <canvas id="progressChart"></canvas>
         </div>
         <div class="stats">
-          <div>Total Goals: {{ goals.length }}</div>
-          <div>Total Learning Hours: {{ totalLearningHours }}</div>
+          <div>Total Goals: <span id="totalGoals"></span></div>
+          <div>Total Learning Hours: <span id="totalLearningHours"></span></div>
         </div>
       </section>
       
@@ -44,20 +47,30 @@
         </form>
       </section>
       
-      <section class="learning-log">
-        <h2>Learning Log</h2>
-        <!-- Learning activities log -->
-        <ul class="activities">
-          <li v-for="activity in learningActivities" :key="activity.id">
-            <strong>{{ activity.date }}</strong>
-            <p>{{ activity.activity }}</p>
-            <small>Duration: {{ activity.hours }} hours</small>
+      <section class="tasks">
+        <h2>Tasks</h2>
+        <!-- Task form -->
+        <form @submit.prevent="addTask">
+          <label for="taskTitle">Task Title:</label>
+          <input type="text" id="taskTitle" v-model="newTask.title" required>
+          <label for="taskDueDate">Due Date:</label>
+          <input type="date" id="taskDueDate" v-model="newTask.dueDate" required>
+          <button type="submit">Add Task</button>
+        </form>
+        <!-- List of tasks -->
+        <ul>
+          <li v-for="task in tasks" :key="task.id">
+            <strong>{{ task.title }}</strong> (Due Date: {{ task.dueDate }})
           </li>
         </ul>
       </section>
     </main>
   
     <footer>
+      <!-- Task pie chart -->
+      <div class="chart">
+        <canvas id="taskPieChart"></canvas>
+      </div>
     </footer>
   </div>
   

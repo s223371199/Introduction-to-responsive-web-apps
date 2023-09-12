@@ -1,0 +1,23 @@
+body {
+  background-color: rgb(40, 188, 237);
+  font-family: 'Bubble Writing', cursive;
+}
+
+#app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  font-family: 'Bubble Writing', cursive;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
