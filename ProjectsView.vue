@@ -1,65 +1,40 @@
 <template>
-    <div :style= "{fontSize: postFontSize + 'em'}">
-
-This is the projects page!
-<div>
-<ol> 
-<li v-for="post in posts">{{ post.title }}</li>
-</ol>
-</div>
-
-<ProjectsComponent
-    v-for="post in posts"
-    :key="post.id"
-    :id="post.id"
-    :title="post.title"
-    :body="post.body"
-
-    @increase-size="increaseSize"
-    >
-
-    import datafile from '../data/file.json'
-    const datalist = ref(datafile.projects)
-{{ post.id }}
-<template #footer>
-This is name SLOT
-</template>
- 
-
-</ProjectsComponent>
-</div>
-
-</template>
-<script setup>
-import {ref, onMounted } from 'vue'
-import ProjectsComponent from '../components/ProjectsComponent.vue'
-
-
-const posts = ref ([])
-const fetchposts = async () => {
-    try{
-        const response = await fetch("https://jsonplaceholder.typicode.com/posts")
-        const data = await response.json()
-
-        posts.value = data
+    <div>
+      <h2>No Upcoming Projects</h2>
+      <div class="line-chart-container">
+      <canvas ref="lineChart"></canvas>
+    </div>
+    </div>
+  </template>
+  
+  <script setup>
+  
+  import { ref, onMounted } from 'vue'
+  import Chart from 'chart.js/auto';
+  import ProjectsComponent from '../components/ProjectsComponent.vue'
+  
+  const projects = ref([])
+  
+  const fetchProjects = async () => {
+    try {
+      const response = await fetch('your-json-api-url-here')
+      const data = await response.json()
+      projects.value = data
+    } catch (error) {
+      console.error('Error fetching projects data', error)
     }
-    catch (error)
-    {
-        console.error("Error fetching data..", error)
-    }
-}
-onMounted(fetchposts)
-const postFontSize = ref(1)
-function increaseSize(){
-postFontSize.value += 1
-}
-</script>
-
-<style scoped>
-div{
-    width: 100%;
-    height: 100%;
-    border-style: solid;
-    padding: 10px;
-}
-</style>
+    
+  }
+  
+  onMounted(fetchProjects)
+  </script>
+  <style scoped>
+  .page-container {
+    border: 2px solid #333;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: white;
+    margin: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  </style>

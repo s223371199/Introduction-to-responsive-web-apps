@@ -1,8 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import NewPage from '../views/ExamplePage.vue'
-import ConceptsPage from '../views/ConceptsView.vue'
+import AboutView from '../views/AboutView.vue'
+import ProjectsView from '../views/ProjectsView.vue'
+import ConceptsView from '../views/ConceptsView.vue'
 import CrudView from '../views/CrudView.vue'
+import ExamplePage from '../views/ExamplePage.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -14,33 +17,28 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    },
-    {
-        path: '/concepts',
-        name: 'concepts',
-        component: ConceptsPage
-    },
-  
-    {
-      path: '/new',
-      name: 'new page',
-      component: NewPage
-    },
-    
-    {
-      path: '/crud',
-      name: 'Crud',
-      component: CrudView
+      component: AboutView
     },
     {
       path: '/projects',
       name: 'projects',
-      component: () => import('../views/ProjectsView.vue')  },
-
+      component: ProjectsView
+    },
+    {
+      path: '/concepts',
+      name: 'concepts',
+      component: ConceptsView
+    },
+    {
+      path: '/crud',
+      name: 'crud',
+      component: CrudView
+    },
+    {
+      path: '/new',
+      name: 'new',
+      component: ExamplePage
+    },
   ]
 })
 

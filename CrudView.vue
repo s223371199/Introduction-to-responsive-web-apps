@@ -1,6 +1,26 @@
-<!--
-https://eugenkiss.github.io/7guis/tasks/#crud
--->
+<template>
+  <div class="myDiv">
+    <div class="form-group">
+   
+      <h3> Add friends personal details to contact them and collaborate</h3>
+      <input v-model="prefix" placeholder="Filter prefix">
+      <select size="5" v-model="selected">
+        <option v-for="name in filteredNames" :key="name">{{ name }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Name:</label>
+      <input v-model="first">
+      <label>Email:</label>
+      <input v-model="last">
+    </div>
+    <div class="buttons">
+      <button @click="create">Create</button>
+      <button @click="update">Update</button>
+      <button @click="del">Delete</button>
+    </div>
+  </div>
+</template>
 
 <script setup>
 import { ref, reactive, computed, watch } from 'vue'
@@ -51,44 +71,33 @@ function hasValidInput() {
 }
 </script>
 
-<template>
-  <div><input v-model="prefix" placeholder="Filter prefix"></div>
-
-  <select size="5" v-model="selected">
-    <option v-for="name in filteredNames" :key="name">{{ name }}</option>
-  </select>
-
-  <label>Name: <input v-model="first"></label>
-  <label>Surname: <input v-model="last"></label>
-
-  <div class="buttons">
-    <button @click="create">Create</button>
-    <button @click="update">Update</button>
-    <button @click="del">Delete</button>
-  </div>
-</template>
-
-<style>
-* {
-  font-size: inherit;
+<style scoped>
+.myDiv {
+  border: 5px outset lightgrey;
+  background-color: red;
+  text-align: center;
+  padding: 20px;
+  font-size: 1rem;
+  color: #333;
 }
 
-input {
-  display: block;
-  margin-bottom: 10px;
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
 }
 
-select {
-  float: left;
-  margin: 0 1em 1em 0;
-  width: 14em;
+.form-group label {
+  margin-right: 50px;
 }
 
 .buttons {
-  clear: both;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 
-button + button {
-  margin-left: 5px;
+.buttons button {
+  margin: 0 10px;
 }
 </style>
